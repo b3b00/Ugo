@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:title="Préférences">
+    <EditTextPreference android:title="Numéro de téléphone"
+        android:key="msgRecipient"
+        android:dialogTitle="numéro de téléphone"
+        android:defaultValue="0660850330"
+        android:inputType="number"
+        />
+    <EditTextPreference android:title="Texte"
+        android:key="msgText"
+        android:dialogTitle="Texte"
+        android:defaultValue="il a fait"
+        android:inputType="number"/>
+</PreferenceScreen><!-- From: file:/C:/Users/olivier/Desktop/Done/app/src/main/res/xml/preferences.xml -->
