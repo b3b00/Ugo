@@ -20,22 +20,54 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
 
 
-        Button button = (Button) findViewById(R.id.buttonDone);
+        Button buttonDone = (Button) findViewById(R.id.buttonDone);
 
-        button.setOnClickListener(new View.OnClickListener() {
+        buttonDone.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
-                SharedPreferences pref= PreferenceManager.getDefaultSharedPreferences(MainActivity.this);
-                String msg = pref.getString("msgText","");
-                String tel = pref.getString("msgRecipient","0660850330");
+                SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(MainActivity.this);
+                String msg = pref.getString("msgDone", "");
+                String tel = pref.getString("msgRecipient", "0660850330");
 
-                android.util.Log.d("DONE","sending SMS");
+                android.util.Log.d("DONE", "sending SMS");
+                SmsManager smsManager = SmsManager.getDefault();
+                smsManager.sendTextMessage(tel, null, msg, null, null);
+            }
+        });
+
+        Button buttonOutButNotDone = (Button) findViewById(R.id.buttonOutButNotDone);
+
+        buttonOutButNotDone.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+
+                SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(MainActivity.this);
+
+                String tel = pref.getString("msgRecipient", "0660850330");
+                String msg = pref.getString("msgOutButNotDone", "");
+                android.util.Log.d("DONE", "sending SMS");
+                SmsManager smsManager = SmsManager.getDefault();
+                smsManager.sendTextMessage(tel, null, msg, null, null);
+            }
+        });
+
+        Button buttonNotOut = (Button) findViewById(R.id.buttonNotOut);
+
+        buttonNotOut.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+
+                SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(MainActivity.this);
+
+                String tel = pref.getString("msgRecipient", "0660850330");
+                String msg = pref.getString("msgNotOut", "");
+                android.util.Log.d("DONE", "sending SMS");
                 SmsManager smsManager = SmsManager.getDefault();
                 smsManager.sendTextMessage(tel, null, msg, null, null);
             }
         });
 
         Button pref = (Button)findViewById(R.id.prefButton);
+
+
 
         pref.setOnClickListener(new View.OnClickListener() {
             @Override

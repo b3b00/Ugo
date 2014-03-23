@@ -73,6 +73,11 @@
                 path="C:\Users\olivier\Desktop\Done\app\src\main\res\xml\preferences.xml"
                 qualifiers=""
                 type="xml" />
+            <file
+                name="prefs"
+                path="C:\Users\olivier\Desktop\Done\app\src\main\res\layout\prefs.xml"
+                qualifiers=""
+                type="layout" />
         </source>
         <source path="C:\Users\olivier\Desktop\Done\app\build\res\rs\debug" />
     </dataSet>
