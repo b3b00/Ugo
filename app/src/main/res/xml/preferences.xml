@@ -5,7 +5,7 @@
         android:key="msgRecipient"
         android:dialogTitle="numéro de téléphone"
         android:defaultValue="0660850330"
-        android:inputType="number"
+        android:inputType="phone"
         />
     <EditTextPreference android:title="message fait"
         android:key="msgDone"
