@@ -1,0 +1,63 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.olivier.MainActivity"
+    tools:ignore="MergeRootFrame" >
+<LinearLayout   android:layout_height="wrap_content"
+                android:layout_width="fill_parent"
+                android:id="@+id/buttons"
+                android:layout_centerVertical="true"
+                android:orientation="vertical"
+                android:gravity="center_horizontal"
+    android:layout_centerHorizontal="true">
+
+
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="fait"
+        android:padding="30px"
+        android:id="@+id/buttonDone"
+        android:background="@android:color/holo_green_light"
+        />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="sorti pas  fait"
+        android:padding="30px"
+        android:layout_marginTop="50px"
+        android:background="@android:color/holo_orange_dark"
+        android:id="@+id/buttonOutButNotDone"
+        />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="30px"
+        android:text="pas sorti"
+        android:background="@android:color/holo_red_dark"
+        android:layout_marginTop="50px"
+        android:id="@+id/buttonNotOut"
+        />
+</LinearLayout>
+
+    <Button
+        android:drawableLeft="@android:drawable/ic_menu_manage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/prefButton"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text=""
+        android:id="@+id/txtInfo"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+</RelativeLayout>
+<!-- From: file:/C:/Users/olivier/Desktop/Done/app/src/main/res/layout/activity_main.xml -->

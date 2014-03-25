@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:title="Préférences">
+    <EditTextPreference android:title="Numéro de téléphone"
+        android:key="msgRecipient"
+        android:dialogTitle="numéro de téléphone"
+        android:defaultValue="0660850330"
+        android:inputType="phone"
+        />
+    <EditTextPreference android:title="message fait"
+        android:key="msgDone"
+        android:dialogTitle="Texte"
+        android:defaultValue="il a fait"
+        />
+    <EditTextPreference android:title="message sorti mais pas fait"
+        android:key="msgOutButNotDone"
+        android:dialogTitle="Texte"
+        android:defaultValue="il est sorti mais n'a pas fait"
+        />
+    <EditTextPreference android:title="message pas sorti"
+        android:key="msgNotOut"
+        android:dialogTitle="Texte"
+        android:defaultValue="il n'est pas sorti"
+        />
+</PreferenceScreen>
