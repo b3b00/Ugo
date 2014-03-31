@@ -1,6 +1,8 @@
 package com.olivier;
 
 import android.app.Activity;
+import android.app.Notification;
+import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -16,6 +18,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.support.v4.app.*;
+
+import java.util.UUID;
 
 public class MainActivity extends Activity {
 
@@ -25,14 +30,33 @@ public class MainActivity extends Activity {
 
     private static final String DELIVERED = "SMS_DELIVERED";
 
-    protected void sendSMS(Button button, String msgKey) {
+    protected void testNotif(String status, String message, String phone ) {
+        //NotificationManager notifMan = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        //Notification notif = new Notification();
+        //notif.icon = R.drawable.ic_launcher;
+        //notif.tickerText = msg + " : " + phone;
+        //notifMan.notify(42,notif);
+        Notification notif = new NotificationCompat.Builder(getBaseContext())
+                .setContentInfo(message + " : " +phone)
+                .setContentTitle(status)
+                .setSmallIcon(R.drawable.ic_launcher).build();
+        NotificationManager notifMan = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        int notifID = UUID.randomUUID().hashCode();
+
+        notifMan.notify(notifID,notif);
+
+
+    }
+
+
+    protected void sendSMS(Button button, final String msgKey) {
         Vibrator vibrator = (Vibrator)getSystemService(VIBRATOR_SERVICE);
         button.setAlpha(0.5f);
 
         vibrator.vibrate(100);
         SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(MainActivity.this);
-        String msg = pref.getString(msgKey, "");
-        String tel = pref.getString("msgRecipient", "0660850330");
+        final String msg = pref.getString(msgKey, "");
+        final String tel = pref.getString("msgRecipient", "0660850330");
 
         android.util.Log.d("DONE", "sending SMS");
         SmsManager smsManager = SmsManager.getDefault();
@@ -53,6 +77,7 @@ public class MainActivity extends Activity {
                 {
                     case Activity.RESULT_OK:
                         message = "SMS sent";
+                        MainActivity.this.testNotif(message,msg, tel);
                         break;
                     case SmsManager.RESULT_ERROR_GENERIC_FAILURE:
                         message = "Generic failure";
@@ -81,12 +106,17 @@ public class MainActivity extends Activity {
             public void onReceive(Context context, Intent intent)
             {
                 // TODO
+
+
+
                 String pdu=intent.getStringExtra("pdu");
                 android.util.Log.i("UGO","SMS delivery intent : pdu=["+pdu+"]");
-                String message = "SMS delivered "+ (pdu != null ? "["+pdu+"]":"");
-                Toast.makeText(getBaseContext(),message,Toast.LENGTH_LONG).show();
+                String toastMessage = "SMS delivered "+ (pdu != null ? "["+pdu+"]":"");
+                MainActivity.this.testNotif(toastMessage,msg, tel);
+
+                Toast.makeText(getBaseContext(),toastMessage,Toast.LENGTH_LONG).show();
                 TextView txt = (TextView)findViewById(R.id.txtInfo);
-                txt.setText(message);
+                txt.setText(toastMessage);
 
             }
         }, new IntentFilter(DELIVERED));
