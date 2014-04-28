@@ -7,6 +7,7 @@ package com.olivier.button;
         import android.graphics.Canvas;
         import android.graphics.Color;
         import android.graphics.Paint;
+        import android.graphics.Rect;
         import android.util.AttributeSet;
         import android.util.TypedValue;
         import android.widget.ImageView;
@@ -89,7 +90,13 @@ public class CircleButton extends ImageView {
         textPaint.setTextAlign(Paint.Align.LEFT);
         textPaint.setTextSize(textSize);
 
-        canvas.drawText(text, 15, canvas.getHeight()/2, textPaint);
+
+        Rect bounds = new Rect();
+        textPaint.getTextBounds("a", 0, 1, bounds);
+
+        canvas.drawText(text, 0, (canvas.getHeight()+ bounds.height()) >> 1, textPaint);
+
+        //canvas.drawText(text, 15, canvas.getHeight()/2, textPaint);
 
         super.onDraw(canvas);
     }
