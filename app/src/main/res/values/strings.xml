@@ -5,4 +5,10 @@
 
     <string name="action_settings">Settings</string>
 
+    <string name="lbl_out_done">fait</string>
+
+    <string name="lbl_out_not_done">sorti pas fait</string>
+
+    <string name="lbl_not_out">pas sorti</string>
+
 </resources>

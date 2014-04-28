@@ -20,7 +20,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="fait"
+        android:text="@string/lbl_out_done"
         android:padding="30px"
         android:id="@+id/buttonDone"
         android:background="@drawable/green_round"
@@ -29,7 +29,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="sorti pas  fait"
+        android:text="@string/lbl_out_not_done"
         android:layout_marginTop="50px"
         android:id="@+id/buttonOutButNotDone"
         android:background="@drawable/orange_round"
@@ -41,7 +41,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="pas sorti"
+        android:text="@string/lbl_not_out"
         android:background="@drawable/red_round"
         android:layout_marginTop="50dp"
         android:id="@+id/buttonNotOut"
@@ -71,11 +71,11 @@
         android:layout_centerHorizontal="true" />
 
     <com.olivier.button.CircleButton
-        android:layout_width="64dip"
-        android:layout_height="64dip"
-        app:cb_text="hello world"
-        app:cb_color="#99CC00"
-        app:cb_pressed_ring_width="8dip"
-        app:cb_text_size="10"/>
+        android:layout_width="150dip"
+        android:layout_height="150dip"
+        app:cb_text="@string/lbl_out_not_done"
+        app:cb_color="@android:color/holo_orange_dark"
+        app:cb_pressed_ring_width="10dip"
+        app:cb_text_size="30"/>
 
 </RelativeLayout>

@@ -28,6 +28,8 @@ public class CircleButton extends ImageView {
 
     private Paint circlePaint;
     private Paint focusPaint;
+    private Paint textPaint;
+
 
     private float animationProgress;
 
@@ -38,16 +40,19 @@ public class CircleButton extends ImageView {
 
     public CircleButton(Context context) {
         super(context);
+        android.util.Log.d("Ugo","contrcutor 1");
         init(context, null);
     }
 
     public CircleButton(Context context, AttributeSet attrs) {
         super(context, attrs);
+        android.util.Log.d("Ugo","contrcutor 2");
         init(context, attrs);
     }
 
     public CircleButton(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
+        android.util.Log.d("Ugo","contrcutor 3");
         init(context, attrs);
     }
 
@@ -68,19 +73,24 @@ public class CircleButton extends ImageView {
 
     @Override
     protected void onDraw(Canvas canvas) {
+        android.util.Log.d("Ugo","onDraw");
         canvas.drawCircle(centerX, centerY, pressedRingRadius + animationProgress, focusPaint);
         canvas.drawCircle(centerX, centerY, outerRadius - pressedRingWidth, circlePaint);
 
-        circlePaint.setTextSize(textSize);
+        /*
+         * dessin du texte
+         *
+         */
+        android.util.Log.d("UGO","onDraw textSize="+textSize);
+        android.util.Log.d("UGO","onDraw color="+Color.BLACK);
+        android.util.Log.d("UGO","onDraw width="+canvas.getWidth()+" height="+canvas.getHeight());
 
-        circlePaint.setColor(Color.BLACK);
-        int width = this.getMeasuredWidth()/2;
-        int height = this.getMeasuredHeight()/2;
-        circlePaint.setTextAlign(Paint.Align.LEFT);
-        canvas.drawText(text, width, height, circlePaint);
+        textPaint.setColor(Color.BLACK);
+        textPaint.setTextAlign(Paint.Align.LEFT);
+        textPaint.setTextSize(textSize);
 
+        canvas.drawText(text, 15, canvas.getHeight()/2, textPaint);
 
-        //canvas.drawText("My Text", -canvas.getWidth()/2, canvas.getHeight()/2, circlePaint);
         super.onDraw(canvas);
     }
 
@@ -108,7 +118,10 @@ public class CircleButton extends ImageView {
 
         circlePaint.setColor(defaultColor);
         focusPaint.setColor(defaultColor);
+
         focusPaint.setAlpha(PRESSED_RING_ALPHA);
+
+        textPaint.setColor(Color.BLACK);
 
         this.invalidate();
     }
@@ -124,6 +137,7 @@ public class CircleButton extends ImageView {
     }
 
     private void init(Context context, AttributeSet attrs) {
+        android.util.Log.d("UGO","starting circle button init");
         this.setFocusable(true);
         this.setScaleType(ScaleType.CENTER_INSIDE);
         setClickable(true);
@@ -134,19 +148,27 @@ public class CircleButton extends ImageView {
         focusPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         focusPaint.setStyle(Paint.Style.STROKE);
 
+        textPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+        textPaint.setStyle(Paint.Style.STROKE);
+
         pressedRingWidth = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, DEFAULT_PRESSED_RING_WIDTH_DIP, getResources()
                 .getDisplayMetrics());
 
-        int color = Color.BLACK;
+        int color = Color.CYAN;
         if (attrs != null) {
+            android.util.Log.d("UGO","found special attributes");
             final TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.CircleButton);
             color = a.getColor(R.styleable.CircleButton_cb_color, color);
+
+            android.util.Log.d("UGO","color is "+color);
             pressedRingWidth = (int) a.getDimension(R.styleable.CircleButton_cb_pressed_ring_width, pressedRingWidth);
             text = (String)a.getString(R.styleable.CircleButton_cb_text);
-            textSize = a.getIndex(R.styleable.CircleButton_cb_text_size);
+            textSize = a.getInt(R.styleable.CircleButton_cb_text_size,10);
+            android.util.Log.d("UGO","textSize is "+textSize);
             a.recycle();
         }
 
+        android.util.Log.d("Ugo","setting color ::"+color);
         setColor(color);
 
         focusPaint.setStrokeWidth(pressedRingWidth);
