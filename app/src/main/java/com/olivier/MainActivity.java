@@ -179,7 +179,8 @@ public class MainActivity extends Activity implements ActionBar.TabListener {
     private void initComponents() {
         // Set up the action bar.
         final ActionBar actionBar = getActionBar();
-        actionBar.setNavigationMode(ActionBar.DISPLAY_SHOW_HOME);
+
+        actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
     }
 
     public boolean onOptionsItemSelected(MenuItem item) {
