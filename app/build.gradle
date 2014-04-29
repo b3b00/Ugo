@@ -1,21 +1,53 @@
 apply plugin: 'android'
 
 android {
-    compileSdkVersion 19
+    signingConfigs {
+        debug {
+
+        }
+
+        myConfig {
+            storeFile file("./keystore.jks")
+            storePassword "bibou34"
+            keyAlias "beboo"
+            keyPassword "bibou34"
+        }
+    }
+
+    compileSdkVersion 15
     buildToolsVersion "19.0.1"
 
     defaultConfig {
         minSdkVersion 15
         targetSdkVersion 15
         versionCode 1
-        versionName "1.1.2"
+        versionName "1.2"
     }
+
     buildTypes {
+        debug {
+          /*  runProguard false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+            debuggable true
+            jniDebugBuild true
+            zipAlign true
+            signingConfig signingConfigs.myConfig*/
+        }
         release {
             runProguard false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+            debuggable true
+            jniDebugBuild true
+            zipAlign true
+            signingConfig signingConfigs.myConfig
         }
     }
+
+
+
+
+
+
 }
 
 dependencies {
