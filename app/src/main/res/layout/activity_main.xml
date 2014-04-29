@@ -43,50 +43,10 @@
         app:cb_pressed_ring_width="10dip"
         app:cb_text_size="30"/>
 
-<!--
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/lbl_out_done"
-        android:padding="30px"
-        android:id="@+id/buttonDone"
-        android:background="@drawable/green_round"
-        android:gravity="center_vertical|center_horizontal"
-        />
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/lbl_out_not_done"
-        android:layout_marginTop="50px"
-        android:id="@+id/buttonOutButNotDone"
-        android:background="@drawable/orange_round"
-        android:paddingLeft="30dp"
-        android:paddingTop="30dp"
-        android:paddingRight="30dp"
-        android:paddingBottom="30dp"
-        android:gravity="center_vertical|center_horizontal"/>
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/lbl_not_out"
-        android:background="@drawable/red_round"
-        android:layout_marginTop="50dp"
-        android:id="@+id/buttonNotOut"
-        android:paddingLeft="30dp"
-        android:paddingTop="30dp"
-        android:paddingRight="30dp"
-        android:paddingBottom="30dp"
-        android:layout_weight="0.60"
-        android:gravity="center_vertical|center_horizontal"/>-->
+
 </LinearLayout>
 
-    <!--<Button
-        android:drawableLeft="@android:drawable/ic_menu_manage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/prefButton"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true" />-->
+
 
     <TextView
         android:layout_width="wrap_content"

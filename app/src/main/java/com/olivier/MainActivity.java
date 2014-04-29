@@ -32,11 +32,6 @@ public class MainActivity extends Activity implements ActionBar.TabListener {
     private static final String DELIVERED = "SMS_DELIVERED";
 
     protected void testNotif(String status, String message, String phone ) {
-        //NotificationManager notifMan = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-        //Notification notif = new Notification();
-        //notif.icon = R.drawable.ic_launcher;
-        //notif.tickerText = msg + " : " + phone;
-        //notifMan.notify(42,notif);
         Notification notif = new NotificationCompat.Builder(getBaseContext())
                 .setContentInfo(message + " : " +phone)
                 .setContentTitle(status)
@@ -77,7 +72,7 @@ public class MainActivity extends Activity implements ActionBar.TabListener {
                 switch (resultCode)
                 {
                     case Activity.RESULT_OK:
-                        message = "SMS sent";
+                        message = getResources().getString(R.string.sent);
                         MainActivity.this.testNotif(message,msg, tel);
                         break;
                     case SmsManager.RESULT_ERROR_GENERIC_FAILURE:
@@ -92,9 +87,11 @@ public class MainActivity extends Activity implements ActionBar.TabListener {
                     case SmsManager.RESULT_ERROR_RADIO_OFF:
                         break;
                 }
-                Toast.makeText(getBaseContext(), "SMS sent", Toast.LENGTH_LONG).show();
-                TextView txt = (TextView)findViewById(R.id.txtInfo);
-                txt.setText(message);
+
+
+                Toast.makeText(getBaseContext(), message, Toast.LENGTH_LONG).show();
+                /*TextView txt = (TextView)findViewById(R.id.txtInfo);
+                txt.setText(message);*/
             }
         }, new IntentFilter(SENT));
 
@@ -112,12 +109,13 @@ public class MainActivity extends Activity implements ActionBar.TabListener {
 
                 String pdu=intent.getStringExtra("pdu");
                 android.util.Log.i("UGO","SMS delivery intent : pdu=["+pdu+"]");
-                String toastMessage = "SMS delivered "+ (pdu != null ? "["+pdu+"]":"");
+                String delivered = getResources().getString(R.string.delivered);
+                String toastMessage = delivered+" "+ (pdu != null ? "["+pdu+"]":"");
                 MainActivity.this.testNotif(toastMessage,msg, tel);
 
                 Toast.makeText(getBaseContext(),toastMessage,Toast.LENGTH_LONG).show();
-                TextView txt = (TextView)findViewById(R.id.txtInfo);
-                txt.setText(toastMessage);
+                /*TextView txt = (TextView)findViewById(R.id.txtInfo);
+                txt.setText(toastMessage);*/
 
             }
         }, new IntentFilter(DELIVERED));

@@ -13,4 +13,9 @@
 
     <string name="manage">paramétres</string>
 
+    <string name="sent">SMS envoyé</string>
+
+    <string name="delivered">SMS reçu</string>
+
+
 </resources>
