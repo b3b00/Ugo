@@ -1,10 +1,6 @@
 package com.olivier;
 
-import android.app.ActionBar;
-import android.app.Activity;
-import android.app.Notification;
-import android.app.NotificationManager;
-import android.app.PendingIntent;
+import android.app.*;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -13,8 +9,10 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Vibrator;
 import android.preference.PreferenceManager;
+import android.support.v4.app.FragmentTransaction;
 import android.telephony.SmsManager;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -136,6 +134,8 @@ public class MainActivity extends Activity implements ActionBar.TabListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        initComponents();
+
 
         CircleButton buttonDone = (CircleButton) findViewById(R.id.buttonDone);
 
@@ -159,10 +159,11 @@ public class MainActivity extends Activity implements ActionBar.TabListener {
             }
         });
 
-        Button pref = (Button)findViewById(R.id.prefButton);
+        //Button pref = (Button)findViewById(R.id.prefButton);
+        // TODO
 
 
-
+/*
         pref.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -170,7 +171,7 @@ public class MainActivity extends Activity implements ActionBar.TabListener {
                 startActivity(i);
             }
         });
-
+*/
 
 
 
@@ -180,17 +181,25 @@ public class MainActivity extends Activity implements ActionBar.TabListener {
     private void initComponents() {
         // Set up the action bar.
         final ActionBar actionBar = getActionBar();
-        actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
-
+        actionBar.setNavigationMode(ActionBar.DISPLAY_SHOW_HOME);
     }
 
-
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.menu_refresh:
+                Intent i = new Intent(MainActivity.this, Preference.class);
+                startActivity(i);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
+        getMenuInflater().inflate(R.menu.menu_main_activity, menu);
         return true;
     }
 
@@ -199,9 +208,6 @@ public class MainActivity extends Activity implements ActionBar.TabListener {
 
 
     public void onTabSelected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
-
-
-
     }
 
 
@@ -211,14 +217,22 @@ public class MainActivity extends Activity implements ActionBar.TabListener {
 
     @Override
     public void onRestoreInstanceState(Bundle savedInstanceState) {
-
     }
 
     @Override
     public void onSaveInstanceState(Bundle outState) {
-
     }
 
-    
 
+    @Override
+    public void onTabSelected(ActionBar.Tab tab, android.app.FragmentTransaction ft) {
+    }
+
+    @Override
+    public void onTabUnselected(ActionBar.Tab tab, android.app.FragmentTransaction ft) {
+    }
+
+    @Override
+    public void onTabReselected(ActionBar.Tab tab, android.app.FragmentTransaction ft) {
+    }
 }

@@ -80,13 +80,13 @@
         android:gravity="center_vertical|center_horizontal"/>-->
 </LinearLayout>
 
-    <Button
+    <!--<Button
         android:drawableLeft="@android:drawable/ic_menu_manage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/prefButton"
         android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true" />
+        android:layout_alignParentRight="true" />-->
 
     <TextView
         android:layout_width="wrap_content"

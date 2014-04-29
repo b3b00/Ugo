@@ -11,4 +11,6 @@
 
     <string name="lbl_not_out">pas sorti</string>
 
+    <string name="manage">paramétres</string>
+
 </resources>
