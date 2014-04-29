@@ -94,9 +94,9 @@ public class CircleButton extends ImageView {
         Rect bounds = new Rect();
         textPaint.getTextBounds("a", 0, 1, bounds);
 
-        canvas.drawText(text, 0, (canvas.getHeight()+ bounds.height()) >> 1, textPaint);
+        float measureText = textPaint.measureText(text);
 
-        //canvas.drawText(text, 15, canvas.getHeight()/2, textPaint);
+        canvas.drawText(text, (canvas.getWidth() - measureText) / 2, (canvas.getHeight()+ bounds.height()) >> 1, textPaint);
 
         super.onDraw(canvas);
     }

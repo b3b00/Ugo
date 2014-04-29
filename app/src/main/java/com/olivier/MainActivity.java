@@ -1,5 +1,6 @@
 package com.olivier;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.app.Notification;
 import android.app.NotificationManager;
@@ -20,9 +21,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.support.v4.app.*;
 
+import com.olivier.button.CircleButton;
+
 import java.util.UUID;
 
-public class MainActivity extends Activity {
+public class MainActivity extends Activity implements ActionBar.TabListener {
 
     private static final String PHONE_NO = "0660850330";
 
@@ -49,7 +52,7 @@ public class MainActivity extends Activity {
     }
 
 
-    protected void sendSMS(Button button, final String msgKey) {
+    protected void sendSMS(CircleButton button, final String msgKey) {
         Vibrator vibrator = (Vibrator)getSystemService(VIBRATOR_SERVICE);
         button.setAlpha(0.5f);
 
@@ -134,25 +137,25 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
 
 
-        Button buttonDone = (Button) findViewById(R.id.buttonDone);
+        CircleButton buttonDone = (CircleButton) findViewById(R.id.buttonDone);
 
         buttonDone.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                sendSMS((Button)v, "msgDone");
+                sendSMS((CircleButton)v, "msgDone");
             }
         });
 
-        Button buttonOutButNotDone = (Button) findViewById(R.id.buttonOutButNotDone);
+        CircleButton buttonOutButNotDone = (CircleButton) findViewById(R.id.buttonOutButNotDone);
 
         buttonOutButNotDone.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {     sendSMS((Button)v, "msgOutButNotDone");        }
+            public void onClick(View v) {     sendSMS((CircleButton)v, "msgOutButNotDone");        }
         });
 
-        Button buttonNotOut = (Button) findViewById(R.id.buttonNotOut);
+        CircleButton buttonNotOut = (CircleButton) findViewById(R.id.buttonNotOut);
 
         buttonNotOut.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                sendSMS((Button)v, "msgNotOut");
+                sendSMS((CircleButton)v, "msgNotOut");
             }
         });
 
@@ -174,6 +177,13 @@ public class MainActivity extends Activity {
     }
 
 
+    private void initComponents() {
+        // Set up the action bar.
+        final ActionBar actionBar = getActionBar();
+        actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
+
+    }
+
 
 
     @Override
@@ -184,6 +194,31 @@ public class MainActivity extends Activity {
         return true;
     }
 
+    public void onTabUnselected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
+    }
 
+
+    public void onTabSelected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
+
+
+
+    }
+
+
+    public void onTabReselected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
+    }
+
+
+    @Override
+    public void onRestoreInstanceState(Bundle savedInstanceState) {
+
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+
+    }
+
+    
 
 }

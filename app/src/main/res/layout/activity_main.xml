@@ -16,7 +16,34 @@
     android:weightSum="1">
 
 
+    <com.olivier.button.CircleButton
+        android:id="@+id/buttonDone"
+        android:layout_width="150dip"
+        android:layout_height="150dip"
+        app:cb_text="@string/lbl_out_done"
+        app:cb_color="@android:color/holo_green_dark"
+        app:cb_pressed_ring_width="10dip"
+        app:cb_text_size="30"/>
 
+    <com.olivier.button.CircleButton
+        android:id="@+id/buttonOutButNotDone"
+        android:layout_width="150dip"
+        android:layout_height="150dip"
+        app:cb_text="@string/lbl_out_not_done"
+        app:cb_color="@android:color/holo_orange_dark"
+        app:cb_pressed_ring_width="10dip"
+        app:cb_text_size="30"/>
+
+    <com.olivier.button.CircleButton
+        android:id="@+id/buttonNotOut"
+        android:layout_width="150dip"
+        android:layout_height="150dip"
+        app:cb_text="@string/lbl_not_out"
+        app:cb_color="@android:color/holo_red_dark"
+        app:cb_pressed_ring_width="10dip"
+        app:cb_text_size="30"/>
+
+<!--
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -50,7 +77,7 @@
         android:paddingRight="30dp"
         android:paddingBottom="30dp"
         android:layout_weight="0.60"
-        android:gravity="center_vertical|center_horizontal"/>
+        android:gravity="center_vertical|center_horizontal"/>-->
 </LinearLayout>
 
     <Button
@@ -70,12 +97,5 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true" />
 
-    <com.olivier.button.CircleButton
-        android:layout_width="150dip"
-        android:layout_height="150dip"
-        app:cb_text="@string/lbl_out_not_done"
-        app:cb_color="@android:color/holo_orange_dark"
-        app:cb_pressed_ring_width="10dip"
-        app:cb_text_size="30"/>
 
 </RelativeLayout>
